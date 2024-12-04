@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_for_products_characteristics",
+  "info": {
+    "displayName": "Characteristic",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "Value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

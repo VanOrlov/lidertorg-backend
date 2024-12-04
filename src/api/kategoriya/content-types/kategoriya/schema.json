@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kategoriyas",
+  "info": {
+    "singularName": "kategoriya",
+    "pluralName": "kategoriyas",
+    "displayName": "Категория",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "slug": "name",
+      "unique": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::kategoriya.kategoriya",
+      "inversedBy": "childrens"
+    },
+    "childrens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::kategoriya.kategoriya",
+      "mappedBy": "parent"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

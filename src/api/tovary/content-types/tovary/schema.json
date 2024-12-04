@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tovaries",
+  "info": {
+    "singularName": "tovary",
+    "pluralName": "tovaries",
+    "displayName": "Товары",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Price": {
+      "type": "decimal",
+      "required": true
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "Characteristic": {
+      "type": "component",
+      "repeatable": true,
+      "component": "for-products.characteristic"
+    },
+    "Main_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "Images_on_product": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
