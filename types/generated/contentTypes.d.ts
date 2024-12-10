@@ -405,6 +405,7 @@ export interface ApiKategoriyaKategoriya extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    tovaries: Schema.Attribute.Relation<'oneToMany', 'api::tovary.tovary'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -423,28 +424,33 @@ export interface ApiTovaryTovary extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Characteristic: Schema.Attribute.Component<
+    characteristic: Schema.Attribute.Component<
       'for-products.characteristic',
       true
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Blocks;
-    Images_on_product: Schema.Attribute.Media<'images' | 'videos', true>;
+    description: Schema.Attribute.Blocks;
+    images_on_product: Schema.Attribute.Media<'images' | 'videos', true>;
+    kategoriya: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::kategoriya.kategoriya'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::tovary.tovary'
     > &
       Schema.Attribute.Private;
-    Main_image: Schema.Attribute.Media<
+    main_image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
-    Price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

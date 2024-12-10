@@ -3,12 +3,13 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface ForProductsCharacteristic extends Struct.ComponentSchema {
   collectionName: 'components_for_products_characteristics';
   info: {
+    description: '';
     displayName: 'Characteristic';
     icon: 'bulletList';
   };
   attributes: {
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    Value: Schema.Attribute.String & Schema.Attribute.Required;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 

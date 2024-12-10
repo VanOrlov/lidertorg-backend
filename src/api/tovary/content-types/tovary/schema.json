@@ -12,40 +12,52 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Price": {
+    "price": {
       "type": "decimal",
       "required": true
     },
-    "Description": {
+    "description": {
       "type": "blocks"
     },
-    "Characteristic": {
+    "characteristic": {
       "type": "component",
       "repeatable": true,
       "component": "for-products.characteristic"
     },
-    "Main_image": {
+    "main_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
-    "Images_on_product": {
+    "images_on_product": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "kategoriya": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::kategoriya.kategoriya",
+      "inversedBy": "tovaries"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "slug": "title"
     }
   }
 }

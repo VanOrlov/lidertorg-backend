@@ -44,6 +44,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "tovaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tovary.tovary",
+      "mappedBy": "kategoriya"
     }
   }
 }

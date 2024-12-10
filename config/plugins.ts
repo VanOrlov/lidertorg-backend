@@ -7,6 +7,10 @@ export default () => ({
               field: 'slug',
               references: 'name',
             },
+            tovary: {
+              field: 'slug',
+              references: 'title',
+            },
           },
         },
       },
