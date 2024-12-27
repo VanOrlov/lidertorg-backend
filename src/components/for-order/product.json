@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_for_order_products",
+  "info": {
+    "displayName": "product",
+    "icon": "lock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "productId": {
+      "type": "string",
+      "required": true
+    },
+    "productName": {
+      "type": "text",
+      "required": true
+    },
+    "productPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "quantity": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

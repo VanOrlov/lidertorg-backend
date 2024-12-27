@@ -1,0 +1,100 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Новый",
+        "Обработан",
+        "В пути",
+        "Доставлен",
+        "Отменен"
+      ],
+      "required": true,
+      "default": "Новый"
+    },
+    "totalPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "RUB",
+        "USD",
+        "EUR"
+      ],
+      "required": true
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": [
+        "Карта",
+        "Наличные",
+        "Онлайн"
+      ],
+      "required": true
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Оплачен",
+        "Не оплачен",
+        "Ожидает оплаты"
+      ],
+      "required": true
+    },
+    "deliveryMethod": {
+      "type": "enumeration",
+      "enum": [
+        "Курьер",
+        "Почта/Транспортная компания",
+        "Самовывоз"
+      ],
+      "required": true
+    },
+    "deliveryPrice": {
+      "type": "decimal"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "customerPhone": {
+      "type": "string",
+      "required": true,
+      "regex": "^\\+?[1-9]\\d{1,14}$"
+    },
+    "customerEmail": {
+      "type": "email",
+      "required": true
+    },
+    "customerAddress": {
+      "type": "text",
+      "required": false
+    },
+    "customerComment": {
+      "type": "text"
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "for-order.product",
+      "required": true
+    }
+  }
+}

@@ -412,6 +412,78 @@ export interface ApiKategoriyaKategoriya extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders';
+  info: {
+    description: '';
+    displayName: 'Order';
+    pluralName: 'orders';
+    singularName: 'order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comment: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.Enumeration<['RUB', 'USD', 'EUR']> &
+      Schema.Attribute.Required;
+    customerAddress: Schema.Attribute.Text;
+    customerComment: Schema.Attribute.Text;
+    customerEmail: Schema.Attribute.Email & Schema.Attribute.Required;
+    customerName: Schema.Attribute.String & Schema.Attribute.Required;
+    customerPhone: Schema.Attribute.String & Schema.Attribute.Required;
+    deliveryMethod: Schema.Attribute.Enumeration<
+      [
+        '\u041A\u0443\u0440\u044C\u0435\u0440',
+        '\u041F\u043E\u0447\u0442\u0430/\u0422\u0440\u0430\u043D\u0441\u043F\u043E\u0440\u0442\u043D\u0430\u044F \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044F',
+        '\u0421\u0430\u043C\u043E\u0432\u044B\u0432\u043E\u0437',
+      ]
+    > &
+      Schema.Attribute.Required;
+    deliveryPrice: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
+      Schema.Attribute.Private;
+    orderStatus: Schema.Attribute.Enumeration<
+      [
+        '\u041D\u043E\u0432\u044B\u0439',
+        '\u041E\u0431\u0440\u0430\u0431\u043E\u0442\u0430\u043D',
+        '\u0412 \u043F\u0443\u0442\u0438',
+        '\u0414\u043E\u0441\u0442\u0430\u0432\u043B\u0435\u043D',
+        '\u041E\u0442\u043C\u0435\u043D\u0435\u043D',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'\u041D\u043E\u0432\u044B\u0439'>;
+    paymentMethod: Schema.Attribute.Enumeration<
+      [
+        '\u041A\u0430\u0440\u0442\u0430',
+        '\u041D\u0430\u043B\u0438\u0447\u043D\u044B\u0435',
+        '\u041E\u043D\u043B\u0430\u0439\u043D',
+      ]
+    > &
+      Schema.Attribute.Required;
+    paymentStatus: Schema.Attribute.Enumeration<
+      [
+        '\u041E\u043F\u043B\u0430\u0447\u0435\u043D',
+        '\u041D\u0435 \u043E\u043F\u043B\u0430\u0447\u0435\u043D',
+        '\u041E\u0436\u0438\u0434\u0430\u0435\u0442 \u043E\u043F\u043B\u0430\u0442\u044B',
+      ]
+    > &
+      Schema.Attribute.Required;
+    products: Schema.Attribute.Component<'for-order.product', true> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    totalPrice: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTovaryTovary extends Struct.CollectionTypeSchema {
   collectionName: 'tovaries';
   info: {
@@ -1005,6 +1077,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::kategoriya.kategoriya': ApiKategoriyaKategoriya;
+      'api::order.order': ApiOrderOrder;
       'api::tovary.tovary': ApiTovaryTovary;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
